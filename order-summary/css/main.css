@@ -3,12 +3,11 @@ body {
   position: relative;
   min-height: 100vh;
   font-family: 'Red Hat Display', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   background-color: #E0E7FA;
   background-image: url("../images/pattern-background-desktop.svg");
   background-repeat: no-repeat;
   /* fit on the screen */
-  /* 세로 길이 줄일 때 잘림 확인 */
   background-size: contain;
 }
 
@@ -36,6 +35,7 @@ img {
   /* height: 30%; */
 }
 
+/* SECTION */
 section {
   width: 80%;
   height: 477px;
@@ -62,9 +62,10 @@ section {
 .main p {
   color: #7280A7;
   line-height: 1.4;
-  margin: 0 30px 20px 30px;
+  margin: 0 20px 25px 20px;
 }
 
+/* PLAN */
 .plan {
   display: flex;
   width: 100%;
@@ -94,10 +95,11 @@ section {
   color: #3829e0;
 }
 
+/* BUTTON */
 section button {
   width: 100%;
   height: 50px;
-  margin: 30px 0;
+  margin: 30px 0 20px 0;
   font-family: inherit;
   font-size: 16px;
   font-weight: 700;
@@ -114,6 +116,7 @@ section button:hover {
 }
 
 section .cancel {
+  padding : 10px 5px;
   font-weight: 700;
   color: #7280a7;
 }
