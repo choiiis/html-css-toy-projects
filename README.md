@@ -9,7 +9,7 @@ mini projects just for practice
 - Design : choiiis
 - Practice Skills : flex, transition, transform
 
-![card-teaser](./readme/card_teaser.png)
+![card-teaser](./readme/card-teaser.gif)
 
 
 ### Order Summary (Finished on 2022-03-04)
