@@ -1,25 +1,39 @@
 const bodyEl = document.querySelector('body')
-const frameEl = document.querySelector('.layer#frame')
+const focusEl = document.querySelector('#focus')
 
-// initialize
+// first load
 window.onload = () => {
-  frameEl.style.width = frameEl.style.height = getballDiameter() + "px"
+  resetFocus()
 }
 
+// screen resized
 window.addEventListener('resize', function() {
-  frameEl.style.width = frameEl.style.height = getballDiameter() + "px"
-  console.log(frameEl.clientWidth)
+  resetFocus()
 })
 
-function getballDiameter() {
-  return (bodyEl.clientWidth + bodyEl.clientHeight) * 0.1
+function resetFocus() {
+  // set diameter
+  focusEl.style.width = focusEl.style.height = getFocusDiameter() + "px"
+  // place on the center
+  focusEl.style.left = (bodyEl.clientWidth - focusEl.clientWidth) * 0.5 + "px"
+  focusEl.style.top = (bodyEl.clientHeight - focusEl.clientWidth) * 0.5 + "px"
 }
 
-// const frameEl = document.querySelector('.layer#frame')
+function getFocusDiameter() {
+  return Math.floor((bodyEl.clientWidth + bodyEl.clientHeight) * 0.1)
+}
 
-// frameEl.addEventListener('click', function() {
-//   const prevX = frameEl.clientWidth
-//   console.log(prevX)
-//   frameEl.style.left = Math.floor(Math.random() * 400) + "px"
-//   frameEl.style.top = Math.floor(Math.random() * 400) + "px"
-// })
+// If click the 'focus' element
+focusEl.addEventListener('click', function() {
+  const prevX = focusEl.clientWidth
+  this.style.left = getRandomPos(prevX)['w'] + "px"
+  this.style.top = getRandomPos(prevX)['h'] + "px"
+})
+
+// Get Random (x, y) in the browser area
+function getRandomPos(d) {
+  return {
+    'w': Math.floor(Math.random() * (bodyEl.clientWidth - d)),
+    'h': Math.floor(Math.random() * (bodyEl.clientHeight - d))
+  }
+}
