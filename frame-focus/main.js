@@ -20,7 +20,7 @@ function resetFocus() {
 }
 
 function getFocusDiameter() {
-  return Math.floor((bodyEl.clientWidth + bodyEl.clientHeight) * 0.1)
+  return Math.floor((bodyEl.clientWidth + bodyEl.clientHeight) * 0.15)
 }
 
 // If click the 'focus' element
