@@ -23,15 +23,16 @@ document.addEventListener("mousemove", trackMouse = (event) => {
 
 let isEventRunning = false
 document.addEventListener("click", clickFocus = (event) => {
-  window.removeEventListener('resize', resizeScreen)
-  document.removeEventListener("mousemove", trackMouse)
-  document.removeEventListener("click", clickFocus)
   if(!isEventRunning) {
     isEventRunning = true
+    window.removeEventListener('resize', resizeScreen)
+    document.removeEventListener("mousemove", trackMouse)
+    document.removeEventListener("click", clickFocus)
+    
     const eventX = event.clientX + "px"
     const eventY = event.clientY + "px"
-    
-    let i = 0
+
+    let i = j = 0
     // zoomIn 반복 실행 3ms에 0.001씩 100번(300ms)
     zoomIn = setInterval(() => {
       i += 1
@@ -47,16 +48,12 @@ document.addEventListener("click", clickFocus = (event) => {
     setTimeout(() => {
       clearInterval(zoomIn)
       console.log("zoomIn Clear")
-  
-      setTimeout(1000)
       
-      i = 0
       // zoomOut 반복 실행 10ms에 0.02씩 100번(1000ms)
       zoomOut = setInterval(() => {
-        i += 1
-        console.log("k" + i)
+        j += 1
         focusEl.style.background = `radial-gradient(
-          circle ${getScreenAvg() * (0.1+(0.02*i))}px at ${eventX} ${eventY},
+          circle ${getScreenAvg() * (0.1+(0.02*j))}px at ${eventX} ${eventY},
           rgba(0, 0, 0, 0.01) 0%,
           rgba(0, 0, 0, 0.5) 70%,
           rgba(0, 0, 0, 0.96) 100%`
