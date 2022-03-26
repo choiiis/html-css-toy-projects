@@ -1,6 +1,5 @@
 const bodyEl = document.querySelector('body')
 const focusEl = document.querySelector('#focus')
-const introEl = document.querySelector('#intro')
 
 // first load
 window.onload = () => {
@@ -8,24 +7,68 @@ window.onload = () => {
 }
 
 // screen resized
-window.addEventListener('resize', function() {
+window.addEventListener("resize", resizeScreen = () => {
   resetFocus()
 })
 
 document.addEventListener("mousemove", trackMouse = (event) => {
-  const focusElX = event.clientX + "px"
-  const focusElY = event.clientY + "px"
+  const eventX = event.clientX + "px"
+  const eventY = event.clientY + "px"
   focusEl.style.background = `radial-gradient(
-    circle ${getScreenAvg() * 0.1}px at ${focusElX} ${focusElY},
+    circle ${getScreenAvg() * 0.2}px at ${eventX} ${eventY},
     rgba(0, 0, 0, 0.01) 0%,
     rgba(0, 0, 0, 0.5) 70%,
     rgba(0, 0, 0, 0.96) 100%`
 })
 
+document.addEventListener("click", clickFocus = (event) => {
+  const eventX = event.clientX + "px"
+  const eventY = event.clientY + "px"
+  
+  let i = 0
+  // zoomIn 반복 실행 3ms에 0.001씩 100번(300ms)
+  zoomIn = setInterval(() => {
+    i += 1
+    console.log(i)
+    focusEl.style.background = `radial-gradient(
+      circle ${getScreenAvg() * (0.2-(0.001*i))}px at ${eventX} ${eventY},
+      rgba(0, 0, 0, 0.01) 0%,
+      rgba(0, 0, 0, 0.5) 70%,
+      rgba(0, 0, 0, 0.96) 100%`
+  }, 3)
+
+  // zoomIn 반복 끝
+  setTimeout(() => {
+    clearInterval(zoomIn)
+    console.log("zoomIn Clear")
+
+    setTimeout(1000)
+    
+    i = 0
+    // zoomOut 반복 실행 10ms에 0.02씩 100번(1000ms)
+    zoomOut = setInterval(() => {
+      i += 1
+      console.log("k" + i)
+      focusEl.style.background = `radial-gradient(
+        circle ${getScreenAvg() * (0.1+(0.02*i))}px at ${eventX} ${eventY},
+        rgba(0, 0, 0, 0.01) 0%,
+        rgba(0, 0, 0, 0.5) 70%,
+        rgba(0, 0, 0, 0.96) 100%`
+    }, 10)
+  
+    // zoomOut 반복 끝
+    setTimeout(() => {
+      clearInterval(zoomOut)
+      console.log("zoomOut Clear")
+      isEventRunning = false
+    }, 1000)
+  }, 300)
+})
+
 function resetFocus() {
   // reset place if reloaded
   focusEl.style.background = `radial-gradient(
-    circle ${getScreenAvg() * 0.1}px at ${bodyEl.clientWidth * 0.6 + "px"} ${bodyEl.clientHeight * 0.3 + "px"},
+    circle ${getScreenAvg() * 0.2}px at ${bodyEl.clientWidth * 0.6 + "px"} ${bodyEl.clientHeight * 0.3 + "px"},
     rgba(0, 0, 0, 0.01) 0%,
     rgba(0, 0, 0, 0.5) 70%,
     rgba(0, 0, 0, 0.96) 100%`
