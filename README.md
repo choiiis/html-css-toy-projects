@@ -41,3 +41,5 @@ Mini projects just for practice
 - Design : [Heropy (FastCampus 강의 예제)](https://github.com/ParkYoungWoong)
 - HTML, SCSS
 - Practice Skills : SCSS
+
+![overwatch-teaser](./readme/overwatch-teaser.gif)
