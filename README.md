@@ -34,3 +34,10 @@ Mini projects just for practice
 - Blog Post : [마우스를 따라 움직이는 조명 효과 구현하기](https://choiiis.github.io/web/how-to-make-spotlight-focus/)
 
 ![spotlight-teaser](./readme/spotlight-teaser.gif)
+
+
+### Overwatch Characters (Finished on 2022-04-07)
+
+- Design : [Heropy (FastCampus 강의 예제)](https://github.com/ParkYoungWoong)
+- HTML, SCSS
+- Practice Skills : SCSS
